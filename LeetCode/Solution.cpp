@@ -457,6 +457,7 @@ bool Solution::hasCycle(ListNode * head)
 
 int Solution::majorityElement(vector<int>& nums)
 {
+#if 0 // 哈希表
 	unordered_map<int, int>numMap;
 	int majority = 0, count = 0;
 
@@ -465,9 +466,29 @@ int Solution::majorityElement(vector<int>& nums)
 
 		if (numMap[num] > count) {
 			majority = num;
-			count = numMap;
+			count = numMap[num];
 		}
 	}
 
-	return 0;
+	return majority;
+#else
+	//摩尔投票法
+	int candidate = 0;
+	int count = 0;
+
+	for (int num : nums) {
+		if (num == candidate) {
+			count++;
+		}
+		else {
+			count--;
+			if (count < 0) {//支持者小于0，候选人换人
+				candidate = num;
+				count = 0;
+			}
+		}
+	}
+
+	return candidate;
+#endif
 }
