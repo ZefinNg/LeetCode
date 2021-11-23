@@ -454,3 +454,20 @@ bool Solution::hasCycle(ListNode * head)
 
 	return false;
 }
+
+int Solution::majorityElement(vector<int>& nums)
+{
+	unordered_map<int, int>numMap;
+	int majority = 0, count = 0;
+
+	for (int num : nums) {
+		numMap[num]++;
+
+		if (numMap[num] > count) {
+			majority = num;
+			count = numMap;
+		}
+	}
+
+	return 0;
+}

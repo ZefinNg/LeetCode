@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <stack>
 #include <unordered_set>
+#include <unordered_map>
 
 using namespace std;
 
@@ -37,5 +38,6 @@ public:
 	static int maxProfit(vector<int> &prices);
 	static int singleNumber(vector<int> &nums);
 	static bool hasCycle(ListNode* head);
+	static int majorityElement(vector<int> &nums);
 };
 
