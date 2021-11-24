@@ -492,3 +492,18 @@ int Solution::majorityElement(vector<int>& nums)
 	return candidate;
 #endif
 }
+
+ListNode * Solution::reverseList(ListNode * head)
+{
+	ListNode *prev = nullptr;
+	ListNode *cur = head;
+
+	while (cur != nullptr) {
+		ListNode *next = cur->next;
+		cur->next = prev;
+		prev = cur;
+		cur = next;
+	}
+
+	return cur;
+}

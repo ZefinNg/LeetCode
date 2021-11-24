@@ -39,5 +39,6 @@ public:
 	static int singleNumber(vector<int> &nums);
 	static bool hasCycle(ListNode* head);
 	static int majorityElement(vector<int> &nums);
+	static ListNode* reverseList(ListNode *head);
 };
 
