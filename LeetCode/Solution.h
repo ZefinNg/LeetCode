@@ -39,6 +39,11 @@ public:
 	static int singleNumber(vector<int> &nums);
 	static bool hasCycle(ListNode* head);
 	static int majorityElement(vector<int> &nums);
+
+	//206.反转链表
 	static ListNode* reverseList(ListNode *head);
+
+	//217.存在重复元素
+	static bool containsDuplicate(vector<int> &nums);
 };
 

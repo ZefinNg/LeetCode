@@ -505,5 +505,19 @@ ListNode * Solution::reverseList(ListNode * head)
 		cur = next;
 	}
 
-	return cur;
+	return prev;
+}
+
+bool Solution::containsDuplicate(vector<int>& nums)
+{
+	unordered_set<int> mySet;
+
+	for (int num : nums) {
+		if (mySet.count(num))
+			return true;
+		else
+			mySet.insert(num);
+	}
+
+	return false;
 }
