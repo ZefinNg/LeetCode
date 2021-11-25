@@ -521,3 +521,42 @@ bool Solution::containsDuplicate(vector<int>& nums)
 
 	return false;
 }
+
+bool Solution::isPowerOfTwo(int n)
+{
+	return n > 0 && (n & (n - 1)) == 0;
+}
+
+vector<TreeNode*> Solution::getPath(TreeNode * root, TreeNode * target)
+{
+	vector<TreeNode *>path;
+	TreeNode *temp = root;
+
+	while (temp != target) {
+		path.push_back(temp);
+
+		if (target->val < temp->val)
+			temp = temp->left;
+		else
+			temp = temp->right;
+	}
+	path.push_back(temp);
+
+	return path;
+}
+
+TreeNode * Solution::lowestCommonAncestor(TreeNode * root, TreeNode * p, TreeNode * q)
+{
+	vector<TreeNode *>pathP = this->getPath(root, p);
+	vector<TreeNode *>pathQ = this->getPath(root, q);
+	TreeNode *ancestor = nullptr;
+
+	for (int i = 0; i < pathP.size() && i < pathQ.size(); i++) {
+		if (pathP[i] == pathQ[i])
+			ancestor = pathP[i];
+		else
+			break;
+	}
+
+	return ancestor;
+}

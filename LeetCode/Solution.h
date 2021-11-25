@@ -16,6 +16,13 @@ struct ListNode {
 	ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
+struct TreeNode {
+	int val;
+	TreeNode *left;
+	TreeNode *right;
+	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
 class Solution
 {
 public:
@@ -45,5 +52,12 @@ public:
 
 	//217.存在重复元素
 	static bool containsDuplicate(vector<int> &nums);
+
+	//231.2的幂
+	static bool isPowerOfTwo(int n);
+
+	//235.二叉搜索树的最近公共祖先
+	vector<TreeNode*> getPath(TreeNode *root, TreeNode *target);
+	static TreeNode* lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q);
 };
 
