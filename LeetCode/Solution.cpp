@@ -547,8 +547,8 @@ vector<TreeNode*> Solution::getPath(TreeNode * root, TreeNode * target)
 
 TreeNode * Solution::lowestCommonAncestor(TreeNode * root, TreeNode * p, TreeNode * q)
 {
-	vector<TreeNode *>pathP = this->getPath(root, p);
-	vector<TreeNode *>pathQ = this->getPath(root, q);
+	vector<TreeNode *>pathP = getPath(root, p);
+	vector<TreeNode *>pathQ = getPath(root, q);
 	TreeNode *ancestor = nullptr;
 
 	for (int i = 0; i < pathP.size() && i < pathQ.size(); i++) {
@@ -588,4 +588,29 @@ void Solution::reverseString(vector<char>& s)
 	for (; left < right; left++, right--)
 		swap(s[left], s[right]);
 #endif
+}
+
+string Solution::reverseWords(string s)
+{
+	int length = s.size();
+	int wordStart = 0, wordEnd = 0;
+
+	for (int i = 0; i < length; i++) {
+		if (s[i] == ' ' || i == length - 1) {
+			s[i] == ' ' ? wordEnd = i - 1 :	wordEnd = i;
+
+			while (wordStart < wordEnd) {
+				char temp    = s[wordEnd];
+				s[wordEnd]   = s[wordStart];
+				s[wordStart] = temp;
+
+				wordStart++;
+				wordEnd--;
+			}
+
+			wordStart = i + 1;
+		}
+	}
+
+	return s;
 }

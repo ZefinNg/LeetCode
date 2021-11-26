@@ -84,13 +84,15 @@ int main()
 		}
 	}
 	ListNode *result = Solution::mergeTwoLists(l1, l2);
-#else
+#elif 0
 	vector<int> nums;
 	nums.push_back(1);
 	nums.push_back(1);
 	nums.push_back(2);
 
 	std::cout << "result:" << Solution::removeDuplicates(nums) << endl;
+#else
+	cout << "result:" << Solution::reverseWords("hello world") << endl;
 #endif
 
     return 0;
