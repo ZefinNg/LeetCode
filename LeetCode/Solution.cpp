@@ -566,3 +566,8 @@ void Solution::deleteNode(ListNode * node)
 	node->val = node->next->val;
 	node->next = node->next->next;
 }
+
+bool Solution::canWinNim(int n)
+{
+	return (n % 4) != 0;
+}
