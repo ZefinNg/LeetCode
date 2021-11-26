@@ -71,5 +71,11 @@ public:
 
 	//557.反转字符串中的单词III
 	static string reverseWords(string s);
+
+	//700.二叉搜索树中的搜索
+	static TreeNode *searchBST(TreeNode *root, int val);
+
+	//458.可怜的小猪
+	static int poorPigs(int buckets, int minutesToDie, int minutesToTest);
 };
 

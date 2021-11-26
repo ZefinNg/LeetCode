@@ -614,3 +614,25 @@ string Solution::reverseWords(string s)
 
 	return s;
 }
+
+TreeNode * Solution::searchBST(TreeNode * root, int val)
+{
+	TreeNode *targetNode = root;
+
+	while (targetNode != nullptr) {
+		if (val == targetNode->val)
+			return targetNode;
+		else if (val < targetNode->val)
+			targetNode = targetNode->left;
+		else
+			targetNode = targetNode->right;
+	}
+
+	return nullptr;
+}
+
+int Solution::poorPigs(int buckets, int minutesToDie, int minutesToTest)
+{
+	int maxTestTimes = minutesToTest / minutesToDie + 1;
+	return ceil(log(buckets) / log(maxTestTimes));
+}
