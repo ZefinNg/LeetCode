@@ -571,3 +571,21 @@ bool Solution::canWinNim(int n)
 {
 	return (n % 4) != 0;
 }
+
+void Solution::reverseString(vector<char>& s)
+{
+#if 0
+	int length = s.size();
+	char temp;
+	for (int i = 0; i < length / 2; i++) {
+		temp = s[length - i - 1];
+		s[length - i - 1] = s[i];
+		s[i] = temp;
+	}
+#else //Ë«Ö¸Õë
+	int left = 0, right = s.size() - 1;
+
+	for (; left < right; left++, right--)
+		swap(s[left], s[right]);
+#endif
+}

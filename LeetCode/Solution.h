@@ -65,5 +65,8 @@ public:
 
 	//292.Nim ÓÎÏ·
 	bool canWinNim(int n);
+
+	//344.·´×ª×Ö·û´®
+	void reverseString(vector<char> &s);
 };
 
