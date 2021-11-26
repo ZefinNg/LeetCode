@@ -560,3 +560,9 @@ TreeNode * Solution::lowestCommonAncestor(TreeNode * root, TreeNode * p, TreeNod
 
 	return ancestor;
 }
+
+void Solution::deleteNode(ListNode * node)
+{
+	node->val = node->next->val;
+	node->next = node->next->next;
+}

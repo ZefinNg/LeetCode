@@ -59,5 +59,8 @@ public:
 	//235.二叉搜索树的最近公共祖先
 	vector<TreeNode*> getPath(TreeNode *root, TreeNode *target);
 	static TreeNode* lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q);
+
+	//237.删除链表中的节点
+	void deleteNode(ListNode *node);
 };
 
