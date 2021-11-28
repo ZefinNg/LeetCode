@@ -1,5 +1,6 @@
 # VS
 *.VC.db
+*.vcxproj.user
 
 # Prerequisites
 *.d

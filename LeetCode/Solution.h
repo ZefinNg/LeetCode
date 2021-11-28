@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <stack>
@@ -77,5 +78,8 @@ public:
 
 	//458.可怜的小猪
 	static int poorPigs(int buckets, int minutesToDie, int minutesToTest);
+
+	//5.最长回文字符串
+	static string longestPalindrome(string s);
 };
 

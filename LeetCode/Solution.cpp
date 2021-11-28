@@ -636,3 +636,47 @@ int Solution::poorPigs(int buckets, int minutesToDie, int minutesToTest)
 	int maxTestTimes = minutesToTest / minutesToDie + 1;
 	return ceil(log(buckets) / log(maxTestTimes));
 }
+
+string Solution::longestPalindrome(string s)
+{
+	int length = s.size();
+	
+	if (length < 2)
+		return s;
+
+	int maxLength = 1; //字串的最大长度，从1开始计算
+	int begin = 0;     //子字符的头下标记录
+	vector<vector<bool>> dp(length, vector<bool>(length));
+
+	for (int i = 0; i < length; i++)
+		dp[i][i] = true;  //只有一个字符，肯定是回文字符串;
+
+	//枚举子字符串，最短从2开始
+	for (int subLength = 2; subLength <= length; subLength++) {
+		//从左边界开始计算
+		for (int left = 0; left < length; left++) {
+			//确定一下右边界
+			int right = left + subLength - 1;
+
+			if (right >= length)
+				break;
+
+			if (s[left] != s[right]) {//头尾不相等，当前肯定不是回文
+				dp[left][right] = false;
+			}
+			else {
+				if (right - left < 3)//只有2个字符
+					dp[left][right] = true;
+				else//头尾相等，得看上个是不是回文
+					dp[left][right] = dp[left + 1][right - 1];
+			}
+
+			if (dp[left][right] && (right - left + 1) > maxLength) {
+				maxLength = right - left + 1;
+				begin = left;
+			}
+		}
+	}
+
+	return s.substr(begin, maxLength);
+}

@@ -91,8 +91,10 @@ int main()
 	nums.push_back(2);
 
 	std::cout << "result:" << Solution::removeDuplicates(nums) << endl;
-#else
+#elif 0
 	cout << "result:" << Solution::reverseWords("hello world") << endl;
+#else
+	cout << "result:" << Solution::longestPalindrome("bb") << endl;
 #endif
 
     return 0;
