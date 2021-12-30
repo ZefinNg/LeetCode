@@ -81,5 +81,8 @@ public:
 
 	//5.最长回文字符串
 	static string longestPalindrome(string s);
+
+	//8.字符串转换整数
+	int myAtoi(string s);
 };
 

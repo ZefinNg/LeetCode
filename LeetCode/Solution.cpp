@@ -680,3 +680,77 @@ string Solution::longestPalindrome(string s)
 
 	return s.substr(begin, maxLength);
 }
+
+int Solution::myAtoi(string s)
+{
+#if 0 //正常思路逻辑推理
+	int length = s.length();
+	int i = 0; 
+	int sign = 1; //1为正数，-1为负数
+	int result = 0;
+
+	while (s[i++] == ' '); //一直循环到i不为' '时，退出循环。此处是先取s[i]，再执行i++;
+
+	i--; //退出循环时由于i已经++，此时回退1
+
+	if (i < length && (s[i] == '-' || s[i] == '+')) {
+		s[i] == '-' ? sign = -1 : sign = 1;
+		i++;
+	}
+
+	for (; i < length; i++) {
+		if (s[i] >= '0' && s[i] <= '9') {
+			/* 
+			 * 判断是否溢出
+			 * INT_MAX为2147483647, INT_MIN为(-2147483647 - 1);
+			 * 当前的result如果从数值上来讲，大于INT_MAX或者等于INT_MAX/10（即马上考虑下一个数字）,且
+			 * 下一个数字大于7，INT_MAX的尾数为7，说明它溢出了。
+			 * 而加入数值溢出，则根据正负号返回最大或最小值即可。
+			 */
+			if (result > INT_MAX / 10 || result == INT_MAX / 10 && (s[i] - '0' > 7))
+				return (sign + 1) ? INT_MAX : INT_MIN;
+
+			result = result * 10 + (s[i] - '0');
+		}
+		else
+			break;
+	}
+
+	return result * sign;
+#else //状态机——自动机
+	string state = "start";
+	unordered_map<string, vector<string>> stateTable = {
+		//              ‘’      +/-       number     other
+		{"start",     {"start", "signed", "in_number", "end"}},
+		{"signed",    {"end",   "end",    "in_number", "end"}},
+		{"in_number", {"end",   "end",    "in_number", "end"}},
+		{"end",       {"end",   "end",    "end",       "end"}}
+	};
+
+	int sign = 1;
+	int result = 0;
+	int stateIndex = 0;
+
+	for (char c : s) {
+		if (isspace(c))
+			stateIndex = 0;
+		else if (c == '+' || c == '-')
+			stateIndex = 1;
+		else if (isdigit(c))
+			stateIndex = 2;
+		else
+			stateIndex = 3;
+
+		state = stateTable[state][stateIndex];
+
+		if (state == "in_number") {
+			result = result * 10 + (c - '0');
+			result = sign == 1 ? min(result, INT_MAX) : min(result, -INT_MIN);
+		}
+		else if (state == "signed")
+			sign = c == '+' ? 1 : -1;
+	}
+
+	return result * sign;
+#endif
+}
