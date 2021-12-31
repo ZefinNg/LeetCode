@@ -728,7 +728,7 @@ int Solution::myAtoi(string s)
 	};
 
 	int sign = 1;
-	int result = 0;
+	long long result = 0;
 	int stateIndex = 0;
 
 	for (char c : s) {
@@ -745,12 +745,57 @@ int Solution::myAtoi(string s)
 
 		if (state == "in_number") {
 			result = result * 10 + (c - '0');
-			result = sign == 1 ? min(result, INT_MAX) : min(result, -INT_MIN);
+			result = sign == 1 ? min(result, (long long)INT_MAX) : min(result, -(long long)INT_MIN);
 		}
 		else if (state == "signed")
 			sign = c == '+' ? 1 : -1;
 	}
 
 	return result * sign;
+#endif
+}
+
+int Solution::maxArea(vector<int>& height)
+{
+#if 0 //动态规划思路，leetcode显示超出时间限制
+	int length = height.size();
+	vector<vector<int>> dp(length, vector<int>(length));
+
+	for (int i = 0; i < length; i++) {
+		for (int j = 0; j < i; j++)
+			dp[i][j] = 0;
+	}
+
+	int result    = INT_MIN;
+	int minHeight = 0;
+	int area      = 0;
+
+	for (int i = 0; i < length; i++) {
+		for (int j = i+1; j < length; j++) {
+			minHeight = min(height[i], height[j]);
+			dp[i][j] = max(minHeight * (j - i), dp[i][j - 1]);
+			result = max(result, dp[i][j]);
+		}
+	}
+
+	return result;
+#else//双指针做法
+	int length = height.size();
+	int first  = 0;
+	int last   = length - 1;
+	int result = INT_MIN;
+	int minHeight = 0;
+
+	while (first != last) {
+		minHeight = min(height[first], height[last]);
+		result = max(minHeight * (last - first), result);
+
+		if (height[first] < height[last])
+			first++;
+		else
+			last--;
+	}
+
+	return result;
 #endif
 }

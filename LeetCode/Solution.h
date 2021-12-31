@@ -84,5 +84,8 @@ public:
 
 	//8.字符串转换整数
 	int myAtoi(string s);
+
+	//11.盛最多水的容器
+	static int maxArea(vector<int>& height);
 };
 

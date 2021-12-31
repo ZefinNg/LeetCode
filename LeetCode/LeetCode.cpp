@@ -93,10 +93,14 @@ int main()
 	std::cout << "result:" << Solution::removeDuplicates(nums) << endl;
 #elif 0
 	cout << "result:" << Solution::reverseWords("hello world") << endl;
-#else
+#elif 0
 	cout << "result:" << Solution::longestPalindrome("bb") << endl;
+#else
+	int array[] = { 1,8,6,2,5,4,8,3,7 };
+	vector<int> test(array, array + sizeof(array) / sizeof(int));
+
+	cout << "result:" << Solution::maxArea(test) << endl;
 #endif
 
     return 0;
 }
-
