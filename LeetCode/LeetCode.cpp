@@ -101,10 +101,10 @@ int main()
 
 	cout << "result:" << Solution::maxArea(test) << endl;
 #else
-	int array[] = {1, 1, 1, 0};
+	int array[] = {3,1};
 	vector<int> test(array, array + sizeof(array) / sizeof(int));
 
-	cout << "result:" << Solution::threeSumClosest(test, 1) << endl;
+	cout << "result:" << Solution::search(test, 1) << endl;
 #endif
 
     return 0;

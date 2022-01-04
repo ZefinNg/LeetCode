@@ -90,5 +90,8 @@ public:
 
 	//16.最接近的三数之和
 	static int threeSumClosest(vector<int> &nums, int target);
+
+	//33.搜索旋转排序数组
+	static int search(vector<int>& nums, int target);
 };
 
