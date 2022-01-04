@@ -799,3 +799,48 @@ int Solution::maxArea(vector<int>& height)
 	return result;
 #endif
 }
+
+int Solution::threeSumClosest(vector<int>& nums, int target)
+{
+	int result = 0;
+	int aIndex, bIndex, cIndex;
+	int length = nums.size();
+	int currentValue = 1e7;
+
+	sort(nums.begin(), nums.end());
+
+	for (aIndex = 0; aIndex < length; aIndex++) {
+		if (aIndex > 0 && nums[aIndex] == nums[aIndex - 1])
+			continue;
+
+		bIndex = aIndex + 1;
+		cIndex = length - 1;
+
+		while (bIndex < cIndex) {
+			result = nums[aIndex] + nums[bIndex] + nums[cIndex];
+
+			if (result == target)
+				return result;
+
+			if (abs(result - target) < abs(currentValue - target))
+				currentValue = result;
+
+			if (result > target) {
+				int cTempIndex = cIndex - 1;
+				while (cTempIndex > bIndex && nums[cIndex] == nums[cTempIndex])
+					cTempIndex--;
+
+				cIndex = cTempIndex;
+			}
+			else {
+				int bTempIndex = bIndex + 1;
+				while (bTempIndex < cIndex && nums[bIndex] == nums[bTempIndex])
+					bTempIndex++;
+
+				bIndex = bTempIndex;
+			}
+		}
+	}
+
+	return currentValue;
+}

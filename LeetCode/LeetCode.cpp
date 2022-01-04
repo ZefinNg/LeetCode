@@ -95,11 +95,16 @@ int main()
 	cout << "result:" << Solution::reverseWords("hello world") << endl;
 #elif 0
 	cout << "result:" << Solution::longestPalindrome("bb") << endl;
-#else
+#elif 0
 	int array[] = { 1,8,6,2,5,4,8,3,7 };
 	vector<int> test(array, array + sizeof(array) / sizeof(int));
 
 	cout << "result:" << Solution::maxArea(test) << endl;
+#else
+	int array[] = {1, 1, 1, 0};
+	vector<int> test(array, array + sizeof(array) / sizeof(int));
+
+	cout << "result:" << Solution::threeSumClosest(test, 1) << endl;
 #endif
 
     return 0;

@@ -87,5 +87,8 @@ public:
 
 	//11.盛最多水的容器
 	static int maxArea(vector<int>& height);
+
+	//16.最接近的三数之和
+	static int threeSumClosest(vector<int> &nums, int target);
 };
 
