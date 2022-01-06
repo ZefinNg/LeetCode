@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -93,5 +94,8 @@ public:
 
 	//33.ËÑË÷Ğı×ªÅÅĞòÊı×é
 	static int search(vector<int>& nums, int target);
+
+	//43.×Ö·û´®Ïà³Ë
+	static string multiply(string num1, string num2);
 };
 

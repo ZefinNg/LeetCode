@@ -890,3 +890,106 @@ int Solution::search(vector<int>& nums, int target)
 	return -1;
 #endif
 }
+
+string Solution::multiply(string num1, string num2)
+{
+#if 0//习惯思维：以num2的数字挨个遍历与num1相乘
+	if (num1 == "0" || num2 == "0")
+		return string("0");
+
+	if (num1 == "1")
+		return num2;
+
+	if (num2 == "1")
+		return num1;
+
+	string result = "0";
+	int tens      = 0;
+	int remainder = 0;
+	int product   = 0;
+
+	//num1 * num2
+	for (int i = num1.size() - 1; i >= 0; i--) {
+		string currentValue;
+
+		//正常的乘法运算思维：
+		//从右往左取出num2的数字，与num1挨个相乘
+
+		//num2中取出的数字要考虑偏移问题，偏移一位补充一个0
+		for (int j = num1.size() - 1; j > i; j--)
+			currentValue.push_back('0');//这里直接push_back，是因为后面会做一次翻转
+
+		for (int j = num2.size() - 1; j >= 0; j--) {
+			product = (num2[j] - '0') * (num1[i] - '0');
+			
+			product += tens;
+			remainder = product % 10;
+			tens = product / 10;
+
+			currentValue.push_back((remainder + '0'));
+		}
+
+		while (tens != 0) {
+			currentValue.push_back((tens % 10) + '0');
+			tens /= 10;
+		}
+
+		//翻转，把之前直接push_back数据重新转过来
+		std::reverse(currentValue.begin(), currentValue.end());
+
+		//把结果累加
+		int resultIndex       = result.size() - 1;
+		int currentValueIndex = currentValue.size() - 1;
+		int add = 0;
+		string tempProduct;
+
+		while (resultIndex >= 0 || currentValueIndex >= 0 || add != 0) {
+			int x = resultIndex < 0 ? 0 : result[resultIndex] - '0';
+			int y = currentValueIndex < 0 ? 0 : currentValue[currentValueIndex] - '0';
+
+			int tempValue = x + y + add;
+			tempProduct.push_back((tempValue % 10)+'0');
+			add = tempValue / 10;
+
+			resultIndex--;
+			currentValueIndex--;
+		}
+
+		std::reverse(tempProduct.begin(), tempProduct.end());
+		result = tempProduct;
+	}
+
+	return result;
+#else//以num1的数字挨个遍历与num2相乘
+	if (num1 == "0" || num2 == "0")
+		return "0";
+
+	int num1Length = num1.size();
+	int num2Length = num2.size();
+
+	vector<int> tempValue = vector<int>(num1Length + num2Length);
+
+	for (int i = num1Length - 1; i >= 0; i--) {
+		int num1EachValue = num1[i] - '0';
+
+		for (int j = num2Length - 1; j >= 0; j--) {
+			int num2EachValue = num2[j] - '0';
+			tempValue[i + j + 1] += num1EachValue * num2EachValue;
+		}
+	}
+
+	//在tempValue中处理好进位问题
+	for (int i = num1Length + num2Length - 1; i > 0; i--) {
+		tempValue[i - 1] += tempValue[i] / 10;
+		tempValue[i] %= 10;
+	}
+
+	int index = tempValue[0] == 0 ? 1 : 0;
+	//将tempValue转成string
+	string result;
+	for (int i = index; i < num1Length + num2Length; i++)
+		result.push_back(tempValue[i] + '0');
+
+	return result;
+#endif
+}

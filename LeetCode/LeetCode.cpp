@@ -100,11 +100,13 @@ int main()
 	vector<int> test(array, array + sizeof(array) / sizeof(int));
 
 	cout << "result:" << Solution::maxArea(test) << endl;
-#else
+#elif 0
 	int array[] = {3,1};
 	vector<int> test(array, array + sizeof(array) / sizeof(int));
 
 	cout << "result:" << Solution::search(test, 1) << endl;
+#else
+	cout << "result:" << Solution::multiply("9", "99") << endl;
 #endif
 
     return 0;
