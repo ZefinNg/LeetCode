@@ -97,5 +97,9 @@ public:
 
 	//43.×Ö·û´®Ïà³Ë
 	static string multiply(string num1, string num2);
+
+	//46.È«ÅÅÁĞ
+	void backtrack(vector<vector<int>>& result, vector<int>& output, int first, int len);
+	vector<vector<int>> permute(vector<int>& nums);
 };
 

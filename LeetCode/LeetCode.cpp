@@ -2,10 +2,10 @@
 //
 
 #include "stdafx.h"
-#include "Solution.h"
 #include <vector>
 #include <iostream>
 #include <string>
+#include "Solution.h"
 
 using namespace std;
 
@@ -105,8 +105,10 @@ int main()
 	vector<int> test(array, array + sizeof(array) / sizeof(int));
 
 	cout << "result:" << Solution::search(test, 1) << endl;
-#else
+#elif 0
 	cout << "result:" << Solution::multiply("9", "99") << endl;
+#else
+
 #endif
 
     return 0;

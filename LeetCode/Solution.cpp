@@ -993,3 +993,25 @@ string Solution::multiply(string num1, string num2)
 	return result;
 #endif
 }
+
+void Solution::backtrack(vector<vector<int>>& result, vector<int>& output, int first, int len)
+{
+	if (first == len) {
+		result.emplace_back(output);
+		return;
+	}
+
+	for (int i = first; i < len; i++) {
+		swap(output[i], output[first]);
+		backtrack(result, output, first + 1, len);
+		swap(output[i], output[first]);
+	}
+}
+
+vector<vector<int>> Solution::permute(vector<int>& nums)
+{
+	vector<vector<int>> result;
+	backtrack(result, nums, 0, nums.size());
+
+	return result;
+}
