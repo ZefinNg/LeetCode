@@ -1015,3 +1015,53 @@ vector<vector<int>> Solution::permute(vector<int>& nums)
 
 	return result;
 }
+
+vector<int> Solution::spiralOrder(vector<vector<int>>& matrix)
+{
+	if (matrix.size() == 0 || matrix[0].size() == 0)
+		return vector<int>();
+
+	//边界
+	int upBoundary    = 0;
+	int downBoundary  = matrix.size() - 1;
+	int leftBoundary  = 0;
+	int rightBoundary = matrix[0].size() - 1;
+
+	vector<int> result;
+
+	while (true) {
+		//向右遍历
+		for (int i = leftBoundary; i <= rightBoundary; i++)
+			result.push_back(matrix[upBoundary][i]);
+		
+		//更新上边界，如果上边界比下边界大，则退出
+		if (++upBoundary > downBoundary)
+			break;
+
+		//向下
+		for (int i = upBoundary; i <= downBoundary; i++)
+			result.push_back(matrix[i][rightBoundary]);
+
+		//更新右边界，如果右边界小于左边界，则退出
+		if (--rightBoundary < leftBoundary)
+			break;
+
+		//向左
+		for (int i = rightBoundary; i >= leftBoundary; i--)
+			result.push_back(matrix[downBoundary][i]);
+
+		//更新下边界，如果下边界小于上边界，则退出
+		if (--downBoundary < upBoundary)
+			break;
+
+		//向上
+		for (int i = downBoundary; i >= upBoundary; i--)
+			result.push_back(matrix[i][leftBoundary]);
+
+		//更新左边界，如果左边界大于右边界，则退出
+		if (++leftBoundary > rightBoundary)
+			break;
+	}
+
+	return result;
+}

@@ -108,7 +108,22 @@ int main()
 #elif 0
 	cout << "result:" << Solution::multiply("9", "99") << endl;
 #else
+	int temp1[] = {1, 2, 3};
+	vector<int> temp1Vector(temp1, temp1 + 3);
 
+	int temp2[] = {4, 5, 6};
+	vector<int> temp2Vector(temp2, temp2 + 3);
+
+	int temp3[] = {7, 8, 9};
+	vector<int> temp3Vector(temp3, temp3 + 3);
+
+	vector<vector<int>> matrix;
+	matrix.push_back(temp1Vector);
+	matrix.push_back(temp2Vector);
+	matrix.push_back(temp3Vector);
+
+	Solution solution;
+	solution.spiralOrder(matrix);
 #endif
 
     return 0;

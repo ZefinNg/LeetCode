@@ -101,5 +101,8 @@ public:
 	//46.È«ÅÅÁĞ
 	void backtrack(vector<vector<int>>& result, vector<int>& output, int first, int len);
 	vector<vector<int>> permute(vector<int>& nums);
+
+	//54.ÂİĞı¾ØÕó
+	vector<int> spiralOrder(vector<vector<int>> &matrix);
 };
 
