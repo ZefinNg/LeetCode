@@ -104,5 +104,8 @@ public:
 
 	//54.ÂİĞı¾ØÕó
 	vector<int> spiralOrder(vector<vector<int>> &matrix);
+
+	//55.ÂİĞı¾ØÕóII
+	vector<vector<int>> generateMatrix(int n);
 };
 

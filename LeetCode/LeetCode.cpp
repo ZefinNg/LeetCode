@@ -107,7 +107,7 @@ int main()
 	cout << "result:" << Solution::search(test, 1) << endl;
 #elif 0
 	cout << "result:" << Solution::multiply("9", "99") << endl;
-#else
+#elif 0
 	int temp1[] = {1, 2, 3};
 	vector<int> temp1Vector(temp1, temp1 + 3);
 
@@ -124,6 +124,9 @@ int main()
 
 	Solution solution;
 	solution.spiralOrder(matrix);
+#else
+    Solution solution;
+	solution.generateMatrix(4);
 #endif
 
     return 0;

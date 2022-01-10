@@ -1065,3 +1065,43 @@ vector<int> Solution::spiralOrder(vector<vector<int>>& matrix)
 
 	return result;
 }
+
+vector<vector<int>> Solution::generateMatrix(int n)
+{
+	vector<vector<int>> result(n, vector<int>(n, 0));
+
+	int endValue = n ^ 2;
+	int upBoundary = 0;
+	int downBoundary = n - 1;
+	int leftBoundary = 0;
+	int rightBoundary = n - 1;
+	int number = 1;
+
+	while (true) {
+		for (int i = leftBoundary; i <= rightBoundary; i++, number++)
+			result[upBoundary][i] = number;
+
+		if (++upBoundary > downBoundary)
+			break;
+
+		for (int i = upBoundary; i <= downBoundary; i++, number++)
+			result[i][rightBoundary] = number;
+
+		if (--rightBoundary < leftBoundary)
+			break;
+
+		for (int i = rightBoundary; i >= leftBoundary; i--, number++)
+			result[downBoundary][i] = number;
+
+		if (--downBoundary < upBoundary)
+			break;
+
+		for (int i = downBoundary; i >= upBoundary; i--, number++)
+			result[i][leftBoundary] = number;
+
+		if (++leftBoundary > rightBoundary)
+			break;
+	}
+
+	return result;
+}
