@@ -1105,3 +1105,53 @@ vector<vector<int>> Solution::generateMatrix(int n)
 
 	return result;
 }
+
+ListNode * Solution::rotateRight(ListNode * head, int k)
+{
+	if (head == NULL || k == 0)
+		return head;
+
+	int length = 0;
+
+	for (ListNode *tempPtr = head; tempPtr != NULL; tempPtr = tempPtr->next)
+		length++;
+
+	int offset = k % length;
+	ListNode* newHeadNode = head;
+	ListNode* tempNode    = head;
+	ListNode* preNode     = nullptr;
+	int i = 0;
+
+	while (true) {
+		if (i == (length - offset)) {
+			newHeadNode = tempNode;
+		}
+		else if ((i+1)== (length - offset)) {
+			preNode = tempNode;
+
+			if (tempNode->next != nullptr) {
+				i++;
+				tempNode = tempNode->next;
+				preNode->next = nullptr;
+			}
+			else {
+				preNode->next = nullptr;
+				break;
+			}
+
+			continue;
+		}
+
+		if (tempNode->next != nullptr) {
+			i++;
+			tempNode = tempNode->next;
+		}
+		else
+			break;
+	}
+
+	if (offset != 0)
+	    tempNode->next = head;
+
+	return newHeadNode;
+}

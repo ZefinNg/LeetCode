@@ -107,5 +107,8 @@ public:
 
 	//55.ÂİĞı¾ØÕóII
 	vector<vector<int>> generateMatrix(int n);
+
+	//61.Ğı×ªÁ´±í
+	ListNode* rotateRight(ListNode* head, int k);
 };
 
