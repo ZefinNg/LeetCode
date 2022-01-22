@@ -110,5 +110,12 @@ public:
 
 	//61.旋转链表
 	ListNode* rotateRight(ListNode* head, int k);
+
+	//62.不同路径
+	int uniquePaths(int m, int n);
+
+	//78.子集
+	vector<vector<int>> subsets(vector<int>& nums);
+	void dfs(vector<vector<int>>& answer, vector<int>& srcNums, int index, vector<int>& tempNum);
 };
 

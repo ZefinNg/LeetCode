@@ -1155,3 +1155,68 @@ ListNode * Solution::rotateRight(ListNode * head, int k)
 
 	return newHeadNode;
 }
+
+int Solution::uniquePaths(int m, int n)
+{
+	/*
+	 * dp[i][j] 表示到i, j的路径数
+	 * dp[i][j] = dp[i-1][j] + dp[i][j-1]（两种方向的和）
+	 * 由于i-1, j-1, 因此i=0、j=0时不符合
+	 */
+	vector<vector<int>> dp(m, vector<int>(n));
+
+	for (int i = 0; i < m; i++)
+		dp[i][0] = 1;
+
+	for (int j = 0; j < n; j++)
+		dp[0][j] = 1;
+
+	for (int i = 1; i < m; i++) {
+		for (int j = 1; j < n; j++)
+			dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+	}
+
+	return dp[m-1][n-1];
+}
+
+vector<vector<int>> Solution::subsets(vector<int>& nums)
+{
+#if 0//迭代法
+	vector<int> element;
+	vector<vector<int>> result;
+
+	int length = nums.size();
+
+	for (int i = 0; i < (1 << length); i++) {
+		element.clear();
+
+		for (int j = 0; j < length; j++) {
+			if (i & (1 << j))
+				element.push_back(nums[j]);
+		}
+
+		result.push_back(element);
+	}
+
+	return result;
+#else//回溯法
+	vector<vector<int>> answer;
+	vector<int> temp;
+	dfs(answer, nums, 0, temp);
+
+	return answer;
+#endif
+}
+
+void Solution::dfs(vector<vector<int>>& answer, vector<int>& srcNums, int index, vector<int>& tempNum)
+{
+	if (index == srcNums.size()) {
+		answer.push_back(tempNum);
+		return;
+	}
+
+	tempNum.push_back(srcNums[index]);
+	dfs(answer, srcNums, index + 1, tempNum);
+	tempNum.pop_back();
+	dfs(answer, srcNums, index + 1, tempNum);
+}
