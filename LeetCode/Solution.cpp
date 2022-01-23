@@ -1220,3 +1220,30 @@ void Solution::dfs(vector<vector<int>>& answer, vector<int>& srcNums, int index,
 	tempNum.pop_back();
 	dfs(answer, srcNums, index + 1, tempNum);
 }
+
+vector<int> Solution::grayCode(int n)
+{
+#if 0//对称法
+	vector<int> result;
+	/*
+	 * 预留capacity，避免pushback中重新分配内存和复制的开销
+	 * 并不影响size大小
+	 */
+	result.reserve(1 << n);
+	result.push_back(0);
+
+	for (int i = 1; i <= n; i++) {
+		int length = result.size();
+		for (int j = length - 1; j >= 0; j--)
+			result.push_back(result[j] | (1 << (i - 1)));
+	}
+	return result;
+#else
+	vector<int> result(1 << n);
+
+	for (int i = 0; i < result.size(); i++)
+		result[i] = (i >> 1) ^ i;
+
+	return result;
+#endif
+}

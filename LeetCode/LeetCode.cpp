@@ -124,9 +124,13 @@ int main()
 
 	Solution solution;
 	solution.spiralOrder(matrix);
-#else
+#elif 0
     Solution solution;
 	solution.generateMatrix(4);
+#else
+    vector<int> nums;
+	nums.reserve(100);
+	cout << "size:" << nums.size() << endl;
 #endif
 
     return 0;
