@@ -1247,3 +1247,40 @@ vector<int> Solution::grayCode(int n)
 	return result;
 #endif
 }
+
+int Solution::maxProfitII(vector<int>& prices)
+{
+#if 0//动态规划
+	int n = prices.size();
+	int dp[n][2]; //dp[n][0] 表示第n天交易完后手里没有股票的最大利润；dp[i][1] 表示第n天交易完后手里持有一支股票的最大利润（n从0开始）
+
+	dp[0][0] = 0;//第0天，不持有股票，利润肯定为0
+	dp[0][1] = -prices[0];//第0天，持有一只股票，利润肯定是负的，花钱买了那只股票
+
+	/*
+	 * 最大的利润：
+	 * 等到最后一天交易结束时，此时的利润势必为dp[n-1][0]或dp[n-1][1]；
+	 * 而dp[n-1][1]表示最后那天交易结束依然持有股票，这个值肯定小于dp[n-1][0]；
+	 * 因此，最大利润值为dp[n-1][0];
+	 */
+	for (int i = 1; i < n; i++) {
+		dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+		dp[i][1] = max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
+	}
+
+	return dp[n - 1][0];
+#else//贪心算法
+	/*
+	 * 这种方法只能适用于求最大利润值，计算过程并不能反映实际的交易过程；
+	 * 每天的交易中，只要第二天的涨了，那么当前就可以买；
+	 * 因此，只要计算每一天交易后的利润最大化即可。
+	 */
+	int result = 0;
+	for (int i = 1; i < prices.size(); i++)
+		result += max(0, prices[i] - prices[i - 1]);
+
+	return result;
+#endif
+
+	return 0;
+}

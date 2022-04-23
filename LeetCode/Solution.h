@@ -25,6 +25,15 @@ struct TreeNode {
 	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
+struct CLS {
+	int m_i;
+	CLS(int i) : m_i(i) {
+	}
+	CLS() {
+		CLS(0);
+	}
+};
+
 class Solution
 {
 public:
@@ -120,5 +129,8 @@ public:
 
 	//89.格雷编码
 	vector<int> grayCode(int n);
+
+	//122.买卖股票的最佳时机II
+	static int maxProfitII(vector<int>& prices);
 };
 
