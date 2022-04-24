@@ -132,5 +132,8 @@ public:
 
 	//122.买卖股票的最佳时机II
 	static int maxProfitII(vector<int>& prices);
+
+	//142.环形链表II
+	static ListNode* detectCycle(ListNode *head);
 };
 

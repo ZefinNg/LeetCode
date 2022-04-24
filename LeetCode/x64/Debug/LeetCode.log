@@ -1,0 +1,23 @@
+﻿  LeetCode.cpp
+  Solution.cpp
+e:\githubporjects\leetcode\leetcode\solution.cpp(17): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(63): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(394): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(424): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(586): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(595): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(637): warning C4244: “return”: 从“double”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(642): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(754): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(783): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(807): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(808): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(860): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(967): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(968): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(1014): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(1026): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(1028): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\githubporjects\leetcode\leetcode\solution.cpp(1242): warning C4334: “<<”: 32 位移位的结果被隐式转换为 64 位(是否希望进行 64 位移位?)
+  正在生成代码...
+  LeetCode.vcxproj -> E:\GithubPorjects\LeetCode\x64\Debug\LeetCode.exe

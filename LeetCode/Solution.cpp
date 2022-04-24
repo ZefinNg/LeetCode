@@ -1284,3 +1284,19 @@ int Solution::maxProfitII(vector<int>& prices)
 
 	return 0;
 }
+
+ListNode * Solution::detectCycle(ListNode * head)
+{
+	unordered_set<ListNode*> set;
+
+	while (head != nullptr) {
+		if (set.count(head))
+			set.insert(head);
+		else
+			return head;
+
+		head = head->next;
+	}
+
+	return nullptr;
+}
