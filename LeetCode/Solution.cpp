@@ -1290,7 +1290,7 @@ ListNode * Solution::detectCycle(ListNode * head)
 	unordered_set<ListNode*> set;
 
 	while (head != nullptr) {
-		if (set.count(head))
+		if (set.count(head) == 0)
 			set.insert(head);
 		else
 			return head;
