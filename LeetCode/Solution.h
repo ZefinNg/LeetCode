@@ -136,5 +136,8 @@ public:
 
 	//142.环形链表II
 	static ListNode* detectCycle(ListNode *head);
+
+    //215.数组中的第K个最大元素
+    static int findKthLargest(vector<int>& nums, int k);
 };
 

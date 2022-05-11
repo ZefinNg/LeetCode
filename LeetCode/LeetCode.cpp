@@ -130,7 +130,7 @@ int main()
 #elif 0
     CLS obj;
 	cout << obj.m_i << endl;
-#else
+#elif 0
     int result;
     LRUCache lRUCache(2);
 	lRUCache.put(1, 1); // 缓存是 {1=1}
@@ -142,7 +142,11 @@ int main()
 	result = lRUCache.get(1);    // 返回 -1 (未找到)
 	result = lRUCache.get(3);    // 返回 3
 	result = lRUCache.get(4);    // 返回 4
+#else 
+    int array[] = { 3,2,1,5,6,4 };
+    vector<int> test(array, array + sizeof(array) / sizeof(int));
 
+    int result = Solution::findKthLargest(test, 2);
 #endif
 
     return 0;

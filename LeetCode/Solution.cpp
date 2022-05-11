@@ -1300,3 +1300,43 @@ ListNode * Solution::detectCycle(ListNode * head)
 
 	return nullptr;
 }
+
+void adjustHeap(vector<int> &nums, int nodeIndex, int length)
+{
+    //int length = nums.size();
+    int left = 2 * nodeIndex + 1;
+    int right = 2 * nodeIndex + 2;
+    int maxIndex = nodeIndex;
+
+    if (left < length && nums[left] < nums[maxIndex])
+        maxIndex = left;
+
+    if (right < length && nums[right] < nums[maxIndex])
+        maxIndex = right;
+
+    if (maxIndex != nodeIndex) {
+        swap(nums[nodeIndex], nums[maxIndex]);
+        adjustHeap(nums, maxIndex, length);
+    }
+}
+
+void heapSort(vector<int>& nums)
+{
+    int length = nums.size();
+    //初始化建堆
+    for (int i = (length - 2) / 2; i >= 0; i--)
+        adjustHeap(nums, i, length);
+
+    //调整堆
+    for (int i = length - 1; i >= 0; i--) {
+        swap(nums[0], nums[i]);
+        adjustHeap(nums, 0, i);
+    }
+}
+
+int Solution::findKthLargest(vector<int>& nums, int k)
+{
+    heapSort(nums);
+
+    return nums[k-1];
+}
