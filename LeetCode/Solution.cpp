@@ -1301,6 +1301,115 @@ ListNode * Solution::detectCycle(ListNode * head)
 	return nullptr;
 }
 
+ListNode * Solution::sortList(ListNode * head)
+{
+#if 0//自顶向下法
+    /*
+     * 1. 利用链表的中点将原链表拆分为两条链表（递归拆分）；
+     * 2. 两条链表分别进行排序；
+     * 3. 再将两条链表按节点大小进行合并。
+     */
+    return sortList(head, nullptr);
+#else//自底向上法
+    if (head == nullptr)
+        return nullptr;
+
+    int length = 0;
+    ListNode *node = head;
+    while (node != nullptr) {
+        length++;
+        node = node->next;
+    }
+
+    ListNode *dummyHead = new ListNode(0, head);
+    for (int subLength = 1; subLength < length; subLength *= 2) {
+        ListNode* prev = dummyHead;
+        ListNode* curr = dummyHead->next;
+        while (curr != nullptr) {
+            ListNode *head1 = curr;
+            for (int i = 1; i < subLength && curr->next != nullptr; i++)
+                curr = curr->next;
+
+            ListNode *head2 = curr->next;
+            curr->next = nullptr;
+            curr = head2;
+            for (int i = 1; i < subLength && curr != nullptr && curr->next != nullptr; i++)
+                curr = curr->next;
+
+            ListNode* next = nullptr;
+            if (curr != nullptr) {
+                next = curr->next;
+                curr->next = nullptr;
+            }
+
+            ListNode* merged = merge(head1, head2);
+            prev->next = merged;
+            while (prev->next != nullptr)
+                prev = prev->next;
+
+            curr = next;
+        }
+    }
+
+    return dummyHead->next;
+#endif
+}
+
+ListNode * Solution::sortList(ListNode * head, ListNode * tail)
+{
+    if (head == nullptr)
+        return nullptr;
+
+    if (head->next == tail) {//链表只有一个节点
+        head->next = nullptr;
+        return head;
+    }
+
+    ListNode *slow = head;
+    ListNode *fast = head;
+
+    while (fast != tail) {
+        slow = slow->next;
+        fast = fast->next;
+
+        if (fast != tail)
+            fast = fast->next;
+    }
+
+    ListNode *mid = slow;
+
+    return merge(sortList(head, mid), sortList(mid, tail));
+}
+
+ListNode * Solution::merge(ListNode * head1, ListNode * head2)
+{
+    ListNode *temp1 = head1;
+    ListNode *temp2 = head2;
+    ListNode *tempNode = new ListNode(0);
+    ListNode *reusltHead = tempNode;
+
+    while (temp1 != nullptr && temp2 != nullptr) {
+        if (temp1->val < temp2->val) {
+            tempNode->next = temp1;
+            temp1 = temp1->next;
+        }
+        else {
+            tempNode->next = temp2;
+            temp2 = temp2->next;
+        }
+
+        tempNode = tempNode->next;
+    }
+
+    if (temp1 == nullptr)
+        tempNode->next = temp2;
+
+    if (temp2 == nullptr)
+        tempNode->next = temp1;
+
+    return reusltHead->next;
+}
+
 void adjustHeap(vector<int> &nums, int nodeIndex, int length)
 {
     //int length = nums.size();
