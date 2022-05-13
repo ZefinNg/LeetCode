@@ -1340,3 +1340,27 @@ int Solution::findKthLargest(vector<int>& nums, int k)
 
     return nums[k-1];
 }
+
+int Solution::kthSmallest(TreeNode * root, int k)
+{
+#if 0
+    std::stack<TreeNode *> treeStack;
+    while (root != nullptr || treeStack.size() > 0) {
+        while (root != nullptr) {
+            treeStack.push(root);
+            root = root->left;
+        }
+        root = treeStack.top();
+        treeStack.pop();
+        k--;
+        if (k == 0)
+            break;
+
+        root = root->right;
+    }
+    return root->val;
+#else
+
+#endif
+    return 0;
+}
