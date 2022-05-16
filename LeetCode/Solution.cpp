@@ -545,7 +545,7 @@ vector<TreeNode*> Solution::getPath(TreeNode * root, TreeNode * target)
 	return path;
 }
 
-TreeNode * Solution::lowestCommonAncestor(TreeNode * root, TreeNode * p, TreeNode * q)
+TreeNode * Solution::bstLowestCommonAncestor(TreeNode * root, TreeNode * p, TreeNode * q)
 {
 	vector<TreeNode *>pathP = getPath(root, p);
 	vector<TreeNode *>pathQ = getPath(root, q);
@@ -1472,4 +1472,59 @@ int Solution::kthSmallest(TreeNode * root, int k)
 
 #endif
     return 0;
+}
+
+bool Solution::dfs(TreeNode * root, TreeNode * p, TreeNode * q)
+{
+    if (root == nullptr)
+        return false;
+
+    bool leftSon = dfs(root->left, p, q);
+    bool rightSon = dfs(root->right, p, q);
+
+    if ((leftSon && rightSon) || ((root->val == p->val || root->val == q->val) && (leftSon || rightSon)))
+        ans = root;
+
+    return leftSon || rightSon || (root->val == p->val || root->val == q->val);
+}
+
+void Solution::dfs(TreeNode * root)
+{
+    if (root == nullptr)
+        return;
+
+    if (root->left != nullptr) {
+        father[root->left->val] = root;
+        dfs(root->left);
+    }
+
+    if (root->right != nullptr) {
+        father[root->right->val] = root;
+        dfs(root->right);
+    }
+}
+
+TreeNode * Solution::lowestCommonAncestor(TreeNode * root, TreeNode * p, TreeNode * q)
+{
+#if 0
+    dfs(root, p, q);
+
+    return ans;
+#else
+    father[root->val] = nullptr;
+    dfs(root);
+
+    while (p != nullptr) {
+        visited[p->val] = true;
+        p = father[p->val];
+    }
+
+    while (q != nullptr) {
+        if (visited[q->val])
+            return q;
+        q = father[q->val];
+    }
+
+    return nullptr;
+#endif
 }

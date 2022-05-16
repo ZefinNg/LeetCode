@@ -72,7 +72,7 @@ public:
 
 	//235.二叉搜索树的最近公共祖先
 	static vector<TreeNode*> getPath(TreeNode *root, TreeNode *target);
-	static TreeNode* lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q);
+	static TreeNode* bstLowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q);
 
 	//237.删除链表中的节点
 	static void deleteNode(ListNode *node);
@@ -149,5 +149,14 @@ public:
 
     //230.二叉搜索树中第k小的元素
     int kthSmallest(TreeNode *root, int k);
+
+    //236.二叉树的最近公共祖先
+    bool dfs(TreeNode* root, TreeNode* p, TreeNode* q);
+    void dfs(TreeNode* root);
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode *p, TreeNode *q);
+private:
+    TreeNode* ans;
+    unordered_map<int, TreeNode*> father;
+    unordered_map<int, bool> visited;
 };
 
