@@ -158,5 +158,8 @@ private:
     TreeNode* ans;
     unordered_map<int, TreeNode*> father;
     unordered_map<int, bool> visited;
+
+    //238.除自身以外数组的乘积
+    vector<int> productExceptSelf(vector<int>& nums);
 };
 

@@ -1528,3 +1528,38 @@ TreeNode * Solution::lowestCommonAncestor(TreeNode * root, TreeNode * p, TreeNod
     return nullptr;
 #endif
 }
+
+vector<int> Solution::productExceptSelf(vector<int>& nums)
+{
+    int length = nums.size();
+    vector<int> result(length, 0);
+    vector<int> left(length, 0);  //left[i]表示i左边的所有数的乘积；
+#if 0 //空间复杂度O(N)
+    vector<int> right(length, 0); //right[i]表示i右边所有数的乘积；
+
+    left[0] = 1;//i=0，左边没有任何数值，因此为1而非0。为0则后面的数值与之相乘均为0
+    for (int i = 1; i < length; i++)
+        left[i] = left[i - 1] * nums[i - 1];
+
+    right[length - 1] = 1;
+    for (int i = length - 2; i >= 0; i--)
+        right[i] = right[i + 1] * nums[i + 1];
+
+    for (int i = 0; i < length; i++)
+        result[i] = left[i] * right[i];
+
+    return result;
+#else //空间复杂度O(1)，用一个值来记录right并及时记录到result中
+    left[0] = 1;
+    for (int i = 1; i < length; i++)
+        left[i] = left[i - 1] * nums[i - 1];
+
+    int right = 1;
+    for (int i = length - 1; i >= 0; i--) {
+        result[i] = left[i] * right;
+        right *= nums[i];
+    }
+
+    return result;
+#endif
+}
