@@ -1563,3 +1563,33 @@ vector<int> Solution::productExceptSelf(vector<int>& nums)
     return result;
 #endif
 }
+
+double Solution::findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2)
+{
+    int length1 = nums1.size();
+    int length2 = nums2.size();
+    vector<int> result(length1 + length2);
+    int index1 = 0;
+    int index2 = 0;
+    int i = index1;
+
+    while (index1 < length1 || index2 < length2) {
+        if (nums1[index1] < nums2[index2]) {
+            result[i] = nums1[index1];
+            index1++;
+        }
+        else {
+            result[i] = nums2[index2];
+            index2++;
+        }
+        i++;
+    }
+
+    int length = result.size();
+    if (length % 2 == 1) {//奇数个
+        return result[(length-1) / 2];
+    }
+    else {//偶数个
+        return (result[length / 2] + result[length / 2 - 1]) / 2;
+    }
+}

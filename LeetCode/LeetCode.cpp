@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include "Solution.h"
+#include "SwordOfferSolution.h"
 
 using namespace std;
 
@@ -142,11 +143,17 @@ int main()
 	result = lRUCache.get(1);    // 返回 -1 (未找到)
 	result = lRUCache.get(3);    // 返回 3
 	result = lRUCache.get(4);    // 返回 4
-#else 
+#elif 0
     int array[] = { 3,2,1,5,6,4 };
     vector<int> test(array, array + sizeof(array) / sizeof(int));
 
     int result = Solution::findKthLargest(test, 2);
+#else
+    int array[] = { 3, 4, 2, 0, 0, 1 };
+    vector<int> test(array, array + sizeof(array) / sizeof(int));
+
+    int result = SwordOfferSolution::findRepeatNumber(test);
+
 #endif
 
     return 0;

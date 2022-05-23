@@ -161,5 +161,8 @@ private:
 
     //238.除自身以外数组的乘积
     vector<int> productExceptSelf(vector<int>& nums);
+
+    //4.寻找两个正序数组的中位数
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2);
 };
 
