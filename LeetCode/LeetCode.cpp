@@ -148,12 +148,25 @@ int main()
     vector<int> test(array, array + sizeof(array) / sizeof(int));
 
     int result = Solution::findKthLargest(test, 2);
-#else
+#elif 0
     int array[] = { 3, 4, 2, 0, 0, 1 };
     vector<int> test(array, array + sizeof(array) / sizeof(int));
 
     int result = SwordOfferSolution::findRepeatNumber(test);
+#else
+    ListNode *head = new ListNode(1);
+    ListNode *mid = new ListNode(3);
+    ListNode *tail = new ListNode(2);
 
+    head->next = mid;
+    mid->next = tail;
+    tail->next = nullptr;
+
+    vector<int> result = SwordOfferSolution::reversePrint(head);
+
+    delete head;
+    delete mid;
+    delete tail;
 #endif
 
     return 0;

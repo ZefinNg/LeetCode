@@ -40,13 +40,13 @@ string SwordOfferSolution::replace(string s)
     int length = s.length();
 
     for (char c : s) {
-        if (c = ' ')
+        if (c == ' ')
             spaceCount++;
     }
 
     s.resize(s.length() + spaceCount * 2);
 
-    for (int i = length - 1, j = s.size() - 1; i > j; i--, j--) {
+    for (int i = length - 1, j = s.size() - 1; i < j; i--, j--) {
         if (s[i] == ' ') {
             s[j] = '0';
             s[j - 1] = '2';
@@ -58,4 +58,22 @@ string SwordOfferSolution::replace(string s)
     }
 
     return s;
+}
+
+vector<int> SwordOfferSolution::reversePrint(ListNode * head)
+{
+    vector<int> result;
+    stack<int> tmpStack;
+
+    while (head != nullptr) {
+        tmpStack.push(head->val);
+        head = head->next;
+    }
+
+    while (tmpStack.empty()) {
+        result.push_back(tmpStack.top());
+        tmpStack.pop();
+    }
+
+    return result;
 }
