@@ -153,7 +153,7 @@ int main()
     vector<int> test(array, array + sizeof(array) / sizeof(int));
 
     int result = SwordOfferSolution::findRepeatNumber(test);
-#else
+#elif 0
     ListNode *head = new ListNode(1);
     ListNode *mid = new ListNode(3);
     ListNode *tail = new ListNode(2);
@@ -167,6 +167,8 @@ int main()
     delete head;
     delete mid;
     delete tail;
+#else
+    int value = SwordOfferSolution::fib(43);
 #endif
 
     return 0;

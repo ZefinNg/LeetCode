@@ -101,8 +101,6 @@ int Solution::fib(int n)
 		return 1;
 	else
 		return fib(n - 1) + fib(n - 2);
-
-	return 0;
 }
 
 int Solution::climbStairs(int n)

@@ -77,3 +77,28 @@ vector<int> SwordOfferSolution::reversePrint(ListNode * head)
 
     return result;
 }
+
+int SwordOfferSolution::fib(int n)
+{
+#if 0//超出时间限制
+    if (n == 0)
+        return 0;
+    else if (n == 1)
+        return 1;
+
+    return fib(n-1) + fib(n-2);
+#else//动态数组
+    int r = 0, p = 0, q = 1;
+    if (n < 2)
+        return n;
+    int MOD = 1e9 + 7;
+
+    for (int i = 2; i <= n; i++) {
+        r = p;
+        p = q;
+        q = (r + p) % MOD;
+    }
+
+    return q;
+#endif
+}

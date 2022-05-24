@@ -23,5 +23,8 @@ public:
 
     //剑指 Offer 09. 用两个栈实现队列
     CQueue m_myQueue;
+
+    //剑指 Offer 10- I. 斐波那契数列
+    static int fib(int n);
 };
 
