@@ -70,7 +70,7 @@ vector<int> SwordOfferSolution::reversePrint(ListNode * head)
         head = head->next;
     }
 
-    while (tmpStack.empty()) {
+    while (!tmpStack.empty()) {
         result.push_back(tmpStack.top());
         tmpStack.pop();
     }

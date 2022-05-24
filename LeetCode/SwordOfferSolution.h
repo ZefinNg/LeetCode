@@ -2,6 +2,7 @@
 #include <vector>
 #include "ListNode.h"
 #include <stack>
+#include "CQueue.h"
 
 using namespace std;
 
@@ -19,5 +20,8 @@ public:
 
     //剑指 Offer 06. 从尾到头打印链表
     static vector<int> reversePrint(ListNode* head);
+
+    //剑指 Offer 09. 用两个栈实现队列
+    CQueue m_myQueue;
 };
 
