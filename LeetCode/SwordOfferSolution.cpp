@@ -33,3 +33,29 @@ int SwordOfferSolution::findRepeatNumber(vector<int>& nums)
 
     return -1;
 }
+
+string SwordOfferSolution::replace(string s)
+{
+    int spaceCount = 0;
+    int length = s.length();
+
+    for (char c : s) {
+        if (c = ' ')
+            spaceCount++;
+    }
+
+    s.resize(s.length() + spaceCount * 2);
+
+    for (int i = length - 1, j = s.size() - 1; i > j; i--, j--) {
+        if (s[i] == ' ') {
+            s[j] = '0';
+            s[j - 1] = '2';
+            s[j - 2] = '%';
+            j -= 2;
+        }
+        else
+            s[j] = s[i];
+    }
+
+    return s;
+}
