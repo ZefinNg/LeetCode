@@ -167,8 +167,10 @@ int main()
     delete head;
     delete mid;
     delete tail;
-#else
+#elif 0
     int value = SwordOfferSolution::fib(43);
+#else
+    int count = SwordOfferSolution::hammingWeight(11);
 #endif
 
     return 0;

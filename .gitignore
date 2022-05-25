@@ -2,6 +2,8 @@
 *.VC.db
 *.vcxproj.user
 *x64
+*.vs
+*ipch
 
 # Prerequisites
 *.d

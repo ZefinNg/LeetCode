@@ -102,3 +102,57 @@ int SwordOfferSolution::fib(int n)
     return q;
 #endif
 }
+
+int SwordOfferSolution::numWays(int n)
+{
+    if (n < 2)
+        return 1;
+    int MOD = 1e9 + 7;
+    int r = 1, p = 1, q = 2;
+
+    for (int i = 2; i <= n; i++) {
+        r = p;
+        p = q;
+        q = (r + p) % MOD;
+    }
+
+    return q;
+}
+
+int SwordOfferSolution::minArray(vector<int>& numbers)
+{
+#if 0//暴力解法
+    for (int i = 1; i < numbers.size(); i++) {
+        if (numbers[i] < numbers[i - 1])
+            return numbers[i];
+    }
+
+    return numbers[0];
+#else//二分法
+    int low = 0;
+    int high = numbers.size() - 1;
+
+    while (low < high) {
+        int mid = (low + high) / 2;
+        if (numbers[mid] > numbers[high])
+            low = mid + 1;
+        else if (numbers[mid] < numbers[high])
+            high = mid;
+        else//中点与最后值相等，抛弃最后端点继续判断
+            high--;
+    }
+
+    return numbers[low];
+#endif
+}
+
+int SwordOfferSolution::hammingWeight(uint32_t n)
+{
+    int result = 0;
+    for (int i = 0; i < 32; i++) {
+        if ((n & (0x01 << i)) != 0)
+            result++;
+    }
+
+    return result;
+}
