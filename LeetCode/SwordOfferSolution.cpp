@@ -2,6 +2,7 @@
 #include "SwordOfferSolution.h"
 
 
+
 SwordOfferSolution::SwordOfferSolution()
 {
 }
@@ -155,4 +156,44 @@ int SwordOfferSolution::hammingWeight(uint32_t n)
     }
 
     return result;
+}
+
+vector<int> SwordOfferSolution::printNumbers(int n)
+{
+#if 0 //暴力解法，没有考虑大数问题
+    vector<int> result;
+    int max = 1;
+    for (int i = 0; i < n; i++) {
+        max *= 10;
+    }
+
+    for (int i = 1; i < max; i++)
+        result.push_back(i);
+
+    return result;
+#else
+    string str(n, '0');
+#endif
+}
+
+ListNode* SwordOfferSolution::deleteNode(ListNode* head, int val)
+{
+    ListNode* prev = head;
+    ListNode* next = head->next;
+
+    if (prev->val == val) {
+        return prev->next;
+    }
+
+    while (next != nullptr) {
+        if (next->val == val) {
+            prev->next = next->next;
+            break;
+        }
+
+        prev = next;
+        next = next->next;
+    }
+
+    return head;
 }

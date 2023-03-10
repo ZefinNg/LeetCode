@@ -2,6 +2,7 @@
 #include <vector>
 #include "ListNode.h"
 #include <stack>
+#include <string>
 #include "CQueue.h"
 
 using namespace std;
@@ -35,5 +36,11 @@ public:
 
     //剑指 Offer 15. 二进制中1的个数
     static int hammingWeight(uint32_t n);
+
+    //剑指 Offer 17. 打印从1到最大的n位数
+    static vector<int> printNumbers(int n);
+
+    //剑指 Offer 18. 删除链表的节点
+    static ListNode* deleteNode(ListNode* head, int val);
 };
 
