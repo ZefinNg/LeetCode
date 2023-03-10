@@ -197,3 +197,32 @@ ListNode* SwordOfferSolution::deleteNode(ListNode* head, int val)
 
     return head;
 }
+
+vector<int> SwordOfferSolution::exchange(vector<int>& nums)
+{
+    if (nums.size() <= 1)
+        return nums;
+
+    int prev = 0, cur = 1;
+    while (prev < cur && cur < nums.size()) {
+        if (nums.at(prev) % 2 == 0) {//Å¼Êý
+            if (nums.at(cur) % 2 == 0) {
+                cur++;
+            }
+            else {
+                int temp = nums.at(prev);
+                nums.at(prev) = nums.at(cur);
+                nums.at(cur) = temp;
+                prev++;
+                cur++;
+            }
+        }
+        else {//ÆæÊý
+            prev++;
+            cur++;
+        }
+    }
+
+
+    return nums;
+}
