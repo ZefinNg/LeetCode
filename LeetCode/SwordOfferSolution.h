@@ -42,5 +42,11 @@ public:
 
     //剑指 Offer 18. 删除链表的节点
     static ListNode* deleteNode(ListNode* head, int val);
+
+    //剑指 Offer 21. 调整数组顺序使奇数位于偶数前面
+    static vector<int> exchange(vector<int>& nums);
+
+    //剑指 Offer 22. 链表中倒数第k个节点
+    static ListNode* getKthFromEnd(ListNode* head, int k);
 };
 

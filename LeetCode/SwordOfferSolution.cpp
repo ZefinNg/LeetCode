@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "SwordOfferSolution.h"
 
-
-
 SwordOfferSolution::SwordOfferSolution()
 {
 }
@@ -196,6 +194,23 @@ ListNode* SwordOfferSolution::deleteNode(ListNode* head, int val)
     }
 
     return head;
+}
+
+ListNode * SwordOfferSolution::getKthFromEnd(ListNode * head, int k)
+{
+    ListNode *prev = head, *cur = head;
+
+    for (int i = 0; i < k-1; i++) {
+        if (cur->next != nullptr)
+            cur = cur->next;
+    }
+
+    while (cur->next != nullptr) {
+        prev = prev->next;
+        cur = cur->next;
+    }
+
+    return prev;
 }
 
 vector<int> SwordOfferSolution::exchange(vector<int>& nums)
