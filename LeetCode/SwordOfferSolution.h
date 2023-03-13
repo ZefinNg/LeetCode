@@ -48,5 +48,8 @@ public:
 
     //剑指 Offer 22. 链表中倒数第k个节点
     static ListNode* getKthFromEnd(ListNode* head, int k);
+
+    //剑指 Offer 25. 合并两个排序的链表
+    static ListNode* mergeTwoLists(ListNode* l1, ListNode* l2);
 };
 

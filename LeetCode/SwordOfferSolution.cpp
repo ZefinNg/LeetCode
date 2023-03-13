@@ -171,6 +171,7 @@ vector<int> SwordOfferSolution::printNumbers(int n)
     return result;
 #else
     string str(n, '0');
+    return vector<int>();
 #endif
 }
 
@@ -213,6 +214,47 @@ ListNode * SwordOfferSolution::getKthFromEnd(ListNode * head, int k)
     return prev;
 }
 
+ListNode* SwordOfferSolution::mergeTwoLists(ListNode* l1, ListNode* l2)
+{
+#if 1 //递归法
+    if (l1 == nullptr)
+        return l2;
+    if (l2 == nullptr)
+        return l1;
+    if (l1->val < l2->val) {
+        l1->next = mergeTwoLists(l1->next, l2);
+        return l1;
+    }
+    else {
+        l2->next = mergeTwoLists(l1, l2->next);
+        return l2;
+    }
+#else //迭代法
+    //假根节点
+    ListNode* preHead = new ListNode(-1);
+    //用于遍历的节点
+    ListNode* prev = preHead;
+
+    while (l1 != nullptr && l2 != nullptr) {
+        if (l1->val < l2->val) {
+            prev->next = l1;
+            l1 = l1->next;
+        }
+        else {
+            prev->next = l2;
+            l2 = l2->next;
+        }
+        //遍历节点位移至新的节点
+        prev = prev->next;
+    }
+
+    //当l1或l2某个遍历为空时
+    prev->next = (l1 == nullptr ? l2 : l1);
+
+    return preHead->next;//假根节点的next，即是有效的根节点
+#endif
+}
+
 vector<int> SwordOfferSolution::exchange(vector<int>& nums)
 {
     if (nums.size() <= 1)
@@ -237,7 +279,6 @@ vector<int> SwordOfferSolution::exchange(vector<int>& nums)
             cur++;
         }
     }
-
 
     return nums;
 }
