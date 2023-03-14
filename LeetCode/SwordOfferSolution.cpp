@@ -255,6 +255,18 @@ ListNode* SwordOfferSolution::mergeTwoLists(ListNode* l1, ListNode* l2)
 #endif
 }
 
+TreeNode* SwordOfferSolution::mirrorTree(TreeNode* root)
+{
+    if (root == nullptr)
+        return nullptr;
+
+    TreeNode* tmp = root->left;//先保存左节点
+    root->left = mirrorTree(root->right);
+    root->right = mirrorTree(tmp);
+
+    return root;
+}
+
 vector<int> SwordOfferSolution::exchange(vector<int>& nums)
 {
     if (nums.size() <= 1)

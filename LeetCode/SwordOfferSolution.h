@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "ListNode.h"
+#include "DataType.h"
 #include <stack>
 #include <string>
 #include "CQueue.h"
@@ -51,5 +51,8 @@ public:
 
     //剑指 Offer 25. 合并两个排序的链表
     static ListNode* mergeTwoLists(ListNode* l1, ListNode* l2);
+
+    //剑指 Offer 27. 二叉树的镜像
+    static TreeNode* mirrorTree(TreeNode* root);
 };
 
