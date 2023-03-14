@@ -267,6 +267,28 @@ TreeNode* SwordOfferSolution::mirrorTree(TreeNode* root)
     return root;
 }
 
+bool SwordOfferSolution::isSymmetric(TreeNode* root)
+{
+    if (root == nullptr)
+        return true;
+    else
+        return isSymmetric(root->left, root->right);
+}
+
+bool SwordOfferSolution::isSymmetric(TreeNode* left, TreeNode* right)
+{
+    //均为nullptr说明对称
+    if (left == nullptr && right == nullptr)
+        return true;
+    
+    //能进入这一步说明left和right至少二者有一个不为nullptr
+    if (left != nullptr || right != nullptr || left->val != right->val)
+        return false;
+
+    //到这里说明这一层对称，继续判断各自是否对称
+    return isSymmetric(left->left, left->right) && isSymmetric(right->left, right->right);
+}
+
 vector<int> SwordOfferSolution::exchange(vector<int>& nums)
 {
     if (nums.size() <= 1)

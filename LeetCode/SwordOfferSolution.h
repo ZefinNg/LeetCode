@@ -54,5 +54,9 @@ public:
 
     //剑指 Offer 27. 二叉树的镜像
     static TreeNode* mirrorTree(TreeNode* root);
+
+    //剑指 Offer 28. 对称的二叉树
+    static bool isSymmetric(TreeNode* root);
+    static bool isSymmetric(TreeNode* left, TreeNode* right);
 };
 
