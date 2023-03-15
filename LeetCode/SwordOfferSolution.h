@@ -58,5 +58,8 @@ public:
     //剑指 Offer 28. 对称的二叉树
     static bool isSymmetric(TreeNode* root);
     static bool isSymmetric(TreeNode* left, TreeNode* right);
+
+    //剑指 Offer 29. 顺时针打印矩阵
+    static vector<int> spiralOrder(vector<vector<int>>& matrix);
 };
 

@@ -282,11 +282,58 @@ bool SwordOfferSolution::isSymmetric(TreeNode* left, TreeNode* right)
         return true;
     
     //能进入这一步说明left和right至少二者有一个不为nullptr
-    if (left != nullptr || right != nullptr || left->val != right->val)
+    if (left == nullptr || right == nullptr || left->val != right->val)
         return false;
 
     //到这里说明这一层对称，继续判断各自是否对称
-    return isSymmetric(left->left, left->right) && isSymmetric(right->left, right->right);
+    return isSymmetric(left->left, right->right) && isSymmetric(left->right, right->left);
+}
+
+vector<int> SwordOfferSolution::spiralOrder(vector<vector<int>>& matrix)
+{
+    if (matrix.empty())
+        return vector<int>();
+
+    vector<int> result;
+
+    int upBorder = 0;
+    int bottomBorder = matrix.size() - 1;
+    int leftBorder = 0;
+    int rightBorder = matrix[0].size() - 1;
+
+    while (true) {
+        //从左向右
+        for (int i = leftBorder; i <= rightBorder; i++)
+            result.push_back(matrix[upBorder][i]);
+
+        //向下走时判断是否达到结束条件
+        if (++upBorder > bottomBorder)
+            break;
+
+        //从上到下
+        for (int i = upBorder; i <= bottomBorder; i++)
+            result.push_back(matrix[i][rightBorder]);
+
+        //往左走时判断是否达到结束条件
+        if (--rightBorder < leftBorder)
+            break;
+
+        //从右往左
+        for (int i = rightBorder; i >= leftBorder; i--)
+            result.push_back(matrix[bottomBorder][i]);
+
+        if (--bottomBorder > upBorder)
+            break;
+
+        //从下往上
+        for (int i = bottomBorder; i >= upBorder; i--)
+            result.push_back(matrix[i][leftBorder]);
+
+        if (++leftBorder > rightBorder)
+            break;
+    }
+
+    return result;
 }
 
 vector<int> SwordOfferSolution::exchange(vector<int>& nums)
