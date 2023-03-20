@@ -4,6 +4,7 @@
 #include <stack>
 #include <string>
 #include "CQueue.h"
+#include <queue>
 
 using namespace std;
 
@@ -61,5 +62,11 @@ public:
 
     //剑指 Offer 29. 顺时针打印矩阵
     static vector<int> spiralOrder(vector<vector<int>>& matrix);
+
+    /*
+     * 难度:中等
+    */
+    //剑指 Offer 32 - I. 从上到下打印二叉树
+    static vector<int> levelOrder(TreeNode* root);
 };
 

@@ -322,7 +322,7 @@ vector<int> SwordOfferSolution::spiralOrder(vector<vector<int>>& matrix)
         for (int i = rightBorder; i >= leftBorder; i--)
             result.push_back(matrix[bottomBorder][i]);
 
-        if (--bottomBorder > upBorder)
+        if (--bottomBorder < upBorder)
             break;
 
         //从下往上
@@ -334,6 +334,34 @@ vector<int> SwordOfferSolution::spiralOrder(vector<vector<int>>& matrix)
     }
 
     return result;
+}
+
+vector<int> SwordOfferSolution::levelOrder(TreeNode * root)
+{
+    if (root == nullptr)
+        return vector<int>();
+
+    vector<int> res;
+    //广度优先搜索(BFS)，利用队列先进先出的特性
+    queue<TreeNode*> q;
+    q.push(root);//先将根节点放入队列
+
+    while (q.size() > 0) {
+        //处理出队的节点
+        TreeNode* tempNode = q.front();
+        q.pop();
+        //保存出队节点的值
+        res.push_back(tempNode->val);
+
+        //出队节点的左节点不为空，则放到队列中，后续处理
+        if (tempNode->left != nullptr)
+            q.push(tempNode->left);
+        //出队节点的右节点不为空，则放到队列中，后续处理
+        if (tempNode->right != nullptr)
+            q.push(tempNode->right);
+    }
+
+    return res;
 }
 
 vector<int> SwordOfferSolution::exchange(vector<int>& nums)
