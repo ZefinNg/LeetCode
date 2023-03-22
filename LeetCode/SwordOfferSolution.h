@@ -63,10 +63,15 @@ public:
     //剑指 Offer 29. 顺时针打印矩阵
     static vector<int> spiralOrder(vector<vector<int>>& matrix);
 
-    /*
-     * 难度:中等
-    */
+#if 1
+    //剑指 Offer 32 - II. 从上到下打印二叉树 II
+    static vector<vector<int>> levelOrder(TreeNode* root);
+#else
     //剑指 Offer 32 - I. 从上到下打印二叉树
     static vector<int> levelOrder(TreeNode* root);
+#endif
+
+    //剑指 Offer 39. 数组中出现次数超过一半的数字
+    static int majorityElement(vector<int>& nums);
 };
 
