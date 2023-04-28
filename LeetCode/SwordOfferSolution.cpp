@@ -336,6 +336,34 @@ vector<int> SwordOfferSolution::spiralOrder(vector<vector<int>>& matrix)
     return result;
 }
 
+#if 1
+vector<vector<int>> SwordOfferSolution::levelOrder(TreeNode* root)
+{
+    if (root == nullptr)
+        return vector<vector<int>>();
+
+    vector<vector<int>> res;
+    queue<TreeNode*> q;
+    q.push(root);
+
+    while (q.size() > 0) {
+        vector<int> eachLine;
+        //q.size()表示了当前这一层有多少个节点，i为0时说明这一层已经走完了，此时将eachLine插入res
+        for (int i = q.size(); i > 0; i--) {
+            TreeNode* temp = q.front();
+            q.pop();
+            eachLine.push_back(temp->val);
+
+            if (temp->left != nullptr)
+                q.push(temp->left);
+            if (temp->right != nullptr)
+                q.push(temp->right);
+        }
+        res.push_back(eachLine);
+    }
+    return res;
+}
+#else
 vector<int> SwordOfferSolution::levelOrder(TreeNode * root)
 {
     if (root == nullptr)
@@ -363,6 +391,33 @@ vector<int> SwordOfferSolution::levelOrder(TreeNode * root)
 
     return res;
 }
+int SwordOfferSolution::majorityElement(vector<int>& nums)
+{
+    int vote = 0;//统计票数
+    int x = 0;   //众数
+
+    for (int num : nums) {
+        if (vote == 0)
+            x = num;
+        vote += (num == x ? 1 : -1);
+    }
+
+#if 1//如果数组没有明确一定存在众数，则需要再进行一次验证
+    int count = 0;
+    for (int num : nums) {
+        if (num == x)
+            count++;
+    }
+
+    if (count > (nums.count() / 2))
+        return x;
+    else
+        return 0;
+#endif
+
+    return x;
+}
+#endif
 
 vector<int> SwordOfferSolution::exchange(vector<int>& nums)
 {
