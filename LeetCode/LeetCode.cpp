@@ -7,6 +7,7 @@
 #include <string>
 #include "Solution.h"
 #include "SwordOfferSolution.h"
+#include "Array.h"
 
 using namespace std;
 
@@ -169,8 +170,17 @@ int main()
     delete tail;
 #elif 0
     int value = SwordOfferSolution::fib(43);
-#else
+#elif 0
     int count = SwordOfferSolution::hammingWeight(11);
+#else
+    Array a;
+	std::vector<int> v;
+	v.push_back(1);
+	v.push_back(3);
+	v.push_back(5);
+	v.push_back(6);
+
+	a.searchInsert(v, 2);
 #endif
 
     return 0;

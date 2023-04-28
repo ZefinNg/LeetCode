@@ -145,6 +145,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Array.h" />
     <ClInclude Include="DataType.h" />
     <ClInclude Include="LRUCache.h" />
     <ClInclude Include="MinStack.h" />
@@ -156,6 +157,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Array.cpp" />
     <ClCompile Include="DataType.cpp" />
     <ClCompile Include="LeetCode.cpp" />
     <ClCompile Include="MinStack.cpp" />
