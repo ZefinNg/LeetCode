@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <vector>
+#include <string>
 
 class Array
 {
@@ -23,7 +24,6 @@ public:
     * 请必须使用时间复杂度为 O(log n) 的算法。
     */
     int searchInsert(std::vector<int>& nums, int target);
-
 
     //~Easy
 };

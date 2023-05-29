@@ -8,6 +8,7 @@
 #include "Solution.h"
 #include "SwordOfferSolution.h"
 #include "Array.h"
+#include "LeetCode75.h"
 
 using namespace std;
 
@@ -172,7 +173,7 @@ int main()
     int value = SwordOfferSolution::fib(43);
 #elif 0
     int count = SwordOfferSolution::hammingWeight(11);
-#else
+#elif 0
     Array a;
 	std::vector<int> v;
 	v.push_back(1);
@@ -181,6 +182,12 @@ int main()
 	v.push_back(6);
 
 	a.searchInsert(v, 2);
+
+#else
+    std::string s("hello");
+	LeetCode75 leetcode75;
+	leetcode75.reverseVowels(s);
+
 #endif
 
     return 0;

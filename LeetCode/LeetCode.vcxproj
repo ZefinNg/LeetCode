@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="Array.h" />
     <ClInclude Include="DataType.h" />
+    <ClInclude Include="LeetCode75.h" />
     <ClInclude Include="LRUCache.h" />
     <ClInclude Include="MinStack.h" />
     <ClInclude Include="MyBst.h" />
@@ -160,6 +161,7 @@
     <ClCompile Include="Array.cpp" />
     <ClCompile Include="DataType.cpp" />
     <ClCompile Include="LeetCode.cpp" />
+    <ClCompile Include="LeetCode75.cpp" />
     <ClCompile Include="MinStack.cpp" />
     <ClCompile Include="CQueue.cpp" />
     <ClCompile Include="Solution.cpp" />
